@@ -58,11 +58,13 @@ module MyList: {
   let filter: ('a => bool, list('a)) => list('a);
 } = {
   /* TODO */
-  let map = (f, lst) => failwith("For you to implement");
+  let map = (f, lst) =>
+    List.fold_left((result, x) => result @ [f(x)], [], lst);
   /* TODO */
-  let iter = (f, lst) => failwith("For you to implement");
+  let iter = (f, lst) => List.fold_left((_result, x) => f(x), (), lst);
   /* TODO */
-  let filter = (f, lst) => failwith("For you to implement");
+  let filter = (f, lst) =>
+    List.fold_left((result, x) => f(x) ? result @ [x] : result, [], lst);
 };
 
 /*
